@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #7ac5cd;
+  font-size: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.card::after {
+  transition: 0.3s;
+  content: attr(data-prod-name) " ";
+  text-align: center;
+  color: #000;
+  font-weight: 900;
+  text-transform: uppercase;
+  opacity: 0.5;
+  position: absolute;
+  bottom: -3em;
+  pointer-events: none;
+}
+
+.card.active::after {
+  opacity: 0;
+}
+
+.card-info {
+  width: 25vh;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #cd827a;
+  border-radius: 5px;
+  transition: 0.8s;
+  padding: 2em 2em;
+  text-align: justify;
+  overflow: hidden;
+}
+
+.card-info h1,
+.card-info p,
+.card-info .buy-btn {
+  display: none;
+  color: #fff;
+  transition: display 0.3;
+}
+
+.card-info h1 {
+  text-transform: uppercase;
+}
+
+.card-info p {
+  font-weight: 400;
+  margin: 2vh 0;
+}
+
+.card-info .buy-btn {
+  text-align: center;
+  border-radius: 5px;
+  padding: 0.5em;
+  width: auto;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.card-info .buy-btn span {
+  font-weight: 500;
+  font-size: 1.5em;
+  color: #cd827a;
+  text-decoration: none;
+}
+
+.card .product {
+  transition: 0.5s;
+  position: absolute;
+  height: 20vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card.active .card-info {
+  width: 40vw;
+  height: 50vh;
+  background-color: #cd827a;
+  padding-right: 18vw;
+}
+
+.card.active .card-info h1,
+.card.active .card-info p,
+.card.active .card-info .buy-btn {
+  display: block;
+}
+
+.card.active .product {
+  height: 60vh;
+  transform: translateX(11.25vw);
+}
+
+@media (max-width: 1500px) {
+  .card.active .card-info {
+    width: 55vw;
+    height: fit-content;
+    padding-right: 22vw;
+  }
+
+  .card.active .product {
+    height: 45vh;
+    transform: translateX(18.5vw);
+  }
+}
+
+@media (max-width: 1100px) {
+  .card-info h1 {
+    font-size: 3vh;
+  }
+
+  .card.active .card-info {
+    width: 75vw;
+    height: fit-content;
+    padding: 2em;
+  }
+
+  .card.active .product {
+    transform: translate3d(35vw, 0, 0);
+    top: -5vh;
+    height: 15vh;
+  }
+}
+
+.cr {
+  color: #fff;
+  font-weight: 100;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
